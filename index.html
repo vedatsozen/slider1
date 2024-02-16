@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SITE 106</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <div id="sliderdiv" class="sliderdiv relative h-screen w-screen z-40" style="background-size: 100% 100%; background-repeat: no-repeat;">
+        <img id="left" class="arrow absolute top-1/2 left-5" src="images/left.png">
+        <img id="right" class="arrow absolute top-1/2 right-5" src="images/right.png">
+        <p id="text1" class="text1 z-50"></p>
+        <p id="text2" class="text2 z-50"></p>
+    </div>
+
+    <script>
+        let photos = ["bir.jpg", "iki.jpg", "uc.jpg"];
+        let texts = [
+            
+        {
+            text1:"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            text2:"Proin ullamcorper pulvinar libero vel molestie. Morbi lacus mauris, maximus et quam at, porta sagittis mauris. Cras facilisis, nunc eu mollis commodo, lectus nisl fringilla tellus, id molestie orci ex a orci. Aliquam sit amet purus semper, elementum urna eu, elementum metus. "
+        },
+        {
+            text1:"Vestibulum ac aliquam nibh. Vivamus commodo luctus odio rutrum semper. ",
+            text2:" Integer id erat eu purus accumsan mollis. Nunc at ornare augue. Curabitur pulvinar neque nibh. Duis iaculis, mi pretium molestie mattis, enim arcu efficitur nunc, ac lobortis nunc urna et ex. Mauris et accumsan est. Etiam ac tempus turpis. "
+        },
+        {
+            text1:"Sed dapibus purus in tellus tristique, non dictum justo faucibus. ",
+            text2:"Etiam consequat tristique leo, eu auctor eros accumsan eu. Curabitur eu augue et purus imperdiet pulvinar eu et quam. Sed scelerisque dignissim velit sit amet dignissim. Etiam at mauris dui. Praesent eu felis posuere, eleifend nulla eget, laoreet mi. Quisque id sem aliquam, scelerisque enim ac, ornare leo. "
+        }
+    
+    
+    
+    
+    
+    
+    ];
+        let i = 0;
+        let sliderdiv = document.getElementById("sliderdiv");
+        text1 = document.getElementById("text1");
+        text2 = document.getElementById("text2");
+
+        function updateBackground() {
+            sliderdiv.style.backgroundImage = "url('images/" + photos[i] + "')";
+            text1.innerHTML = texts[i].text1;
+            text2.innerHTML = texts[i].text2;
+        }
+
+        updateBackground();
+
+        document.getElementById("left").addEventListener("click", function () {
+            i = (i - 1 + photos.length) % photos.length;
+            updateBackground();
+        });
+
+        document.getElementById("right").addEventListener("click", function () {
+            i = (i + 1) % photos.length;
+            updateBackground();
+        });
+    </script>
+
+</body>
+
+</html>
